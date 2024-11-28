@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -11,6 +11,13 @@ import { Router } from '@angular/router';
 })
 export class ProductsComponent {
 
-  private _router = inject(Router);
+  cartMessage: string | null = null;
+
+  addToCart(): void {
+    this.cartMessage = 'Producto agregado al carrito';
+    setTimeout(() => {
+      this.cartMessage = null; // Oculta el mensaje después de 3 segundos
+    }, 2000);
+  } 
 
 }

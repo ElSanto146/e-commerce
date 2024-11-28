@@ -1,0 +1,20 @@
+.container1{
+    display: grid;
+    justify-items: center;
+}
+
+img{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.carousel-img-top {
+    text-align: center;
+}
+
+h1, h4, h3{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 4px #ed3939;
+}
+
