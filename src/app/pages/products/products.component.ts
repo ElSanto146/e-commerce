@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { CartServiceService } from './../../service/cart-service.service';
 
 @Component({
   selector: 'app-products',
@@ -12,12 +13,17 @@ import { Router, RouterLink } from '@angular/router';
 export class ProductsComponent {
 
   cartMessage: string | null = null;
+  //constructor(@Inject(CartServiceService) private cartService: CartServiceService) { }
+  private _cartService = inject(CartServiceService);
 
   addToCart(): void {
-    this.cartMessage = 'Producto agregado al carrito';
+
+    this._cartService.incrementCart();//Incrementar el contador del carrito
+
+    this.cartMessage = 'Se agregadó al carrito';
     setTimeout(() => {
       this.cartMessage = null; // Oculta el mensaje después de 3 segundos
-    }, 2000);
+    }, 1500);
   } 
 
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { CartServiceService } from './service/cart-service.service';
 
 
 @Component({
@@ -11,5 +12,13 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Mi proyecto';
+  cartCount = 0;
+
+  constructor(private cartService: CartServiceService){}
+
+  ngOnInit(): void{
+    this.cartService.cartCount$.subscribe((count) => {
+      this.cartCount = count;//Actualizar elcontador del carrito
+    });
+  }
 }
