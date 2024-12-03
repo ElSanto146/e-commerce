@@ -13,4 +13,4 @@ Esta es una aplicación web para gestionar un comercio en línea. Permite a los 
 ## Instalación
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/ElSanto146/comercio-electronico.git
+   git clone https://github.com/ElSanto146/e-commerce.git
