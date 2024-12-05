@@ -11,6 +11,13 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+ .loading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(2, 2, 88);
+}
+
 :root { 
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;

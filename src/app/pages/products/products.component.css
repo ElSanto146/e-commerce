@@ -5,4 +5,10 @@ h6 {
 .alert {
     font-size: 1.2rem;
     font-weight: bold;
-  }
+}
+
+.loading {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(2, 2, 88);
+}
