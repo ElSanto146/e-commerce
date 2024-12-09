@@ -6,7 +6,7 @@ import { IProducto } from '../../models/products.model';
 import { ApiServiceService } from '../../service/api-service.service';
 
 @Component({
-  selector: 'app-products',
+  selector: 'app-products', 
   standalone: true,
   imports: [CommonModule],
   templateUrl: './products.component.html',

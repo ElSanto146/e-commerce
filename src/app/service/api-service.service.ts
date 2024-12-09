@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { IProducto } from '../models/products.model';
 
 @Injectable({
@@ -26,4 +26,17 @@ export class ApiServiceService {
     return this._http.get<IProducto>(`${this._urlBase}/find/${id}`);
   }
 
+  //Obtener solo los productos nuevos, llamando al servicio HttpClient
+  getNewProducts(): Observable<IProducto[]> {
+    return this.getProducts().pipe(
+      map((productos: IProducto[]) => productos.filter(producto => producto.isNew))
+    )
+  }
+
+  //Obtener solo los productos en oferta
+  getSaleProducts(): Observable<IProducto[]> {
+    return this.getProducts().pipe(
+      map((productos: IProducto[]) => productos.filter(producto => producto.isSale))
+    )
+  }
 }

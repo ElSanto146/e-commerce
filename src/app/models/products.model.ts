@@ -8,6 +8,7 @@ export interface IProducto {
     isSale:      boolean;
     isNew:       boolean;
     message:     string | null;
+    cantidad:    number;
 }
 
 export enum Img {

@@ -1,4 +1,4 @@
-<section class="py-5 loading fonde">
+<section class="py-5 loading">
     @if (loading) {
         <h6>Cargando productos.... </h6>
     } 
@@ -6,17 +6,12 @@
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
     
-                @for (product of productList; track $index) {
+                @for (product of productosOfertas; track $index) {
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Sale badge-->
-                        <div class="badge  text-black position-absolute new rotate-15"
-                             *ngIf="product.isNew">
+                        <div class="badge  text-black position-absolute new">
                             <h6 class="d-flex justify-content-center text-black mb-2">Nuevo</h6>
-                        </div>
-                        <div class="badge  text-black position-absolute rotate-15 sale"
-                             *ngIf="product.isSale">
-                            <h6>Oferta</h6>
                         </div>
                         <!-- Product image-->
                         <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
@@ -32,8 +27,7 @@
                                 <!-- Product reviews-->
                                 <h6> {{product.description}} </h6>
                                 <!-- Product price-->
-                                <h5><span class="text-muted text-decoration-line-through" *ngIf="product.isSale"> {{getDiscountedPrice(product) | currency}}</span>
-                                {{product.price | currency}}</h5>
+                                <h5>{{product.price | currency}}</h5>
                             </div>
                         </div>
                         <!-- Product actions-->

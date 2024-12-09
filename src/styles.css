@@ -18,6 +18,12 @@
   color: rgb(2, 2, 88);
 }
 
+.fonde{
+  background-color: #a4cc36;
+    background-image: linear-gradient(180deg, #a4cc36 10%, #8c9125 100%);
+    background-size: cover;
+}
+
 :root { 
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;

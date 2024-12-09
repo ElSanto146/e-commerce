@@ -12,3 +12,22 @@ h6 {
     font-weight: bold;
     color: rgb(2, 2, 88);
 }
+
+.rotate-15 {
+    transform: rotate(15deg);
+}
+
+.sale{
+    top: 0.5rem; 
+    right: 0.5rem; 
+    background-color: yellow;
+}
+
+.new{
+    top: 0.5rem; 
+    left: 0.5rem; 
+    background-color: yellowgreen;
+    transform: rotate(-15deg);
+}
+
+

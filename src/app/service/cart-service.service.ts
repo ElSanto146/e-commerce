@@ -26,18 +26,50 @@ export class CartServiceService {
     return this.cartCount.value;//Obtener el valor actual
   } 
 
-  getCart(){
-    return this.cartSubject.asObservable();//Obtener los productos del carrito como un observable
+  //Obtener el carrito como observable para que los componentes puedan suscribirse
+  getCartList(){
+    return this.cartSubject.asObservable();
   }
 
-  getCartList(): Observable<IProducto[]>{
-    return this.cartSubject.asObservable();//Obtener los productos del carrito
+  //Agregar un produco al carrito
+  addProductToCart(product: IProducto): void{
+    const existingProduct = this.cartList.find((p) => p.id === product.id);//Buscar si el producto ya está en el carrito
+
+    if(existingProduct){
+      //Incrementar cantidad si ya existe
+      existingProduct.cantidad +=1;
+      this.incrementCart();//Incrementar el contador
+    }else{
+      //Agregar nuevo producto con cantidad inicial 1
+      this.cartList.push({ ...product, cantidad: 1 });
+      this.incrementCart();//Incrementar el contador
+    }
+    this.cartSubject.next(this.cartList);//Notificar cambios a los suscriptores        
   }
 
-  addProductToCart(product: IProducto): void{    
-    this.cartList.push(product);//Agregar producto al carrito
-    this.cartSubject.next(this.cartList);//Actualizar el estado del carrito
-    this.incrementCart();//Incrementar el contador    
+  //Decrementar cantidad o eliminar un producto del carrito
+  deleteProductFromCart(productId: number): void{
+    const productIndex = this.cartList.findIndex((p) => p.id === productId);//Buscar el índice del producto
+
+    if (productIndex !== -1) {
+      const product = this.cartList[productIndex];//Obtener el producto
+      
+      if (product.cantidad > 1) {
+        product.cantidad! -= 1;//Decrementar la cantidad
+        this.decrementarCart();//Decrementar el contador        
+      } else {
+        this.cartList.splice(productIndex, 1);//Eliminar el producto del carrito
+        this.decrementarCart();//Decrementar el contador
+      }
+    }
+    this.cartSubject.next(this.cartList);//Notificar a los suscriptores    
+  }
+
+  //Limpiar el carrito
+  clearCart(): void{
+    this.cartList = [];//Vaciar la lista
+    this.cartCount.next(0);//Reiniciar el contador
+    this.cartSubject.next(this.cartList);//Notificar a los suscriptores
   }
 
 }
